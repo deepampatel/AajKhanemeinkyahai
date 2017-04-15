@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Registeration"
+        android:text="User Login"
         android:layout_gravity="center_horizontal"/>
     <EditText
         android:inputType="textEmailAddress"
@@ -29,16 +29,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/signinText"
-        android:text="Already a user? Sign in here."
+        android:id="@+id/signupText"
+        android:text="Not a user?Sign in here.."
         android:layout_gravity="center_horizontal"/>
     <Button
         android:layout_marginTop="20dp"
-        android:id="@+id/signupbutton"
+        android:id="@+id/signinbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Sign Up"/>
+        android:text="Sign in"/>
 
 
 </LinearLayout>
