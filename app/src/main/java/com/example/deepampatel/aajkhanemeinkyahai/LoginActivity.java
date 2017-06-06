@@ -2,7 +2,6 @@ package com.example.deepampatel.aajkhanemeinkyahai;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.BitmapRegionDecoder;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,8 +16,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-import org.w3c.dom.Text;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText edittextEmail;
@@ -36,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(firebaseAuth.getCurrentUser()!=null)
         {
             finish();
-            startActivity(new Intent(this,ProfileActivity.class));
+            startActivity(new Intent(this,SeeMenuActivity.class));
         }
         edittextEmail=(EditText)findViewById(R.id.editextEMAIL);
         edittextPassword=(EditText)findViewById(R.id.editextPASSWORD);
@@ -68,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if(task.isSuccessful()){
                             progressDialog.dismiss();
                           finish();
-                            startActivity(new Intent(LoginActivity.this,ProfileActivity.class));
+                            startActivity(new Intent(LoginActivity.this,SeeMenuActivity.class));
                         }
                         else
                             progressDialog.dismiss();

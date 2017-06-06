@@ -14,14 +14,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private EditText edittextemail;
     private EditText edittextpassword;
-    private TextView signin;
+    private TextView signinTextview;
     private Button signupbutton;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
@@ -35,17 +34,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(firebaseAuth.getCurrentUser()!=null)
         {
             finish();
-            startActivity(new Intent(this,ProfileActivity.class));
+            startActivity(new Intent(this,profileactivity.class));
         }
         progressDialog=new ProgressDialog(this);
         edittextemail=(EditText)findViewById(R.id.editextEMAIL);
         edittextpassword=(EditText)findViewById(R.id.editextPASSWORD);
         signupbutton =(Button)findViewById(R.id.signupbutton);
 
-        signin=(TextView)findViewById(R.id.signinText);
+        signinTextview=(TextView)findViewById(R.id.signinText);
 
         signupbutton.setOnClickListener(this);
-        signin.setOnClickListener(this);
+        signinTextview.setOnClickListener(this);
 
     }
     private void registeruser(){
@@ -69,10 +68,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if(task.isSuccessful()){
                             progressDialog.dismiss();
                             finish();
-                            startActivity(new Intent(MainActivity.this,ProfileActivity.class));
+                            startActivity(new Intent(MainActivity.this,profileactivity.class));
                         }
                         else {
-                            progressDialog.dismiss();
+
                             Toast.makeText(MainActivity.this, "Could not register,please try again", Toast.LENGTH_LONG).show();
                         }
                     }
@@ -82,11 +81,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+
     @Override
     public void onClick(View view) {
         if(view==signupbutton)
             registeruser();
-        if(view==signin){
+        if(view==signinTextview){
             //start login activity
             finish();
             startActivity(new Intent(this,LoginActivity.class));

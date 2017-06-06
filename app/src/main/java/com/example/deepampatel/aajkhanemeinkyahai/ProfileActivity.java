@@ -6,38 +6,61 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-public class ProfileActivity extends AppCompatActivity implements View.OnClickListener{
-    private TextView userEmailText;
-    private Button logoutButton;
+public class profileactivity extends AppCompatActivity implements View.OnClickListener{
+    private TextView mess1;
+    private TextView mess2;
+    private Button updateButton;
+    private TextView mess3;
     private FirebaseAuth firebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_profileactivity);
         firebaseAuth=FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()==null){
             finish();
             startActivity(new Intent(this,LoginActivity.class));
         }
-        FirebaseUser user=firebaseAuth.getCurrentUser();
-        userEmailText=(TextView)findViewById(R.id.userEmailView);
-        logoutButton=(Button)findViewById(R.id.logoutButton);
+        updateButton=(Button)findViewById(R.id.updateButton);
+        mess1=(TextView)findViewById(R.id.mess1);
+        mess2=(TextView)findViewById(R.id.mess2);
+        mess3=(TextView)findViewById(R.id.mess3);
 
-        logoutButton.setOnClickListener(this);
-        userEmailText.setText("Welcome  "+user.getEmail());
+        mess1.setOnClickListener(this);
+        mess2.setOnClickListener(this);
+        mess3.setOnClickListener(this);
+        updateButton.setOnClickListener(this);
     }
 
+    public void getmess1Menu(){
+        Toast.makeText(this,"MEss1!",Toast.LENGTH_LONG).show();
+    }
+    public void getmess2Menu(){
+    }
+    public void getmess3Menu(){
+    }
     @Override
     public void onClick(View v) {
-        if(v==logoutButton)
+        if(v==mess1)
         {
-            firebaseAuth.signOut();
+         getmess1Menu();
+        }
+        else if(v==mess2)
+        {
+            getmess2Menu();
+        }
+        else if(v==mess3)
+        {
+            getmess3Menu();
+        }
+        else if(v==updateButton)
+        {
             finish();
-            startActivity(new Intent(this,LoginActivity.class));
+            startActivity(new Intent(MainActivity.this,SeeMenuActivity.class));
         }
     }
 }
