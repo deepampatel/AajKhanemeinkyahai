@@ -1,8 +1,8 @@
 package com.example.deepampatel.aajkhanemeinkyahai;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -60,7 +60,7 @@ public class profileactivity extends AppCompatActivity implements View.OnClickLi
         else if(v==updateButton)
         {
             finish();
-            startActivity(new Intent(MainActivity.this,SeeMenuActivity.class));
+            startActivity(new Intent(profileactivity.this,SeeMenuActivity.class));
         }
     }
 }
