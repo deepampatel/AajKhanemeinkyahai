@@ -19,8 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SeeMenuActivity" />
-        <activity android:name=".profileactivity"></activity>
+        <activity android:name=".updateMenu" />
+        <activity android:name=".profileactivity" />
+        <activity android:name=".seeMenu"></activity>
     </application>
 
 </manifest>

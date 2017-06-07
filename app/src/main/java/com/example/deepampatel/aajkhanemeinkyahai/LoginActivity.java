@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(firebaseAuth.getCurrentUser()!=null)
         {
             finish();
-            startActivity(new Intent(this,SeeMenuActivity.class));
+            startActivity(new Intent(this,updateMenu.class));
         }
         edittextEmail=(EditText)findViewById(R.id.editextEMAIL);
         edittextPassword=(EditText)findViewById(R.id.editextPASSWORD);
@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         if(task.isSuccessful()){
                             progressDialog.dismiss();
                           finish();
-                            startActivity(new Intent(LoginActivity.this,SeeMenuActivity.class));
+                            startActivity(new Intent(LoginActivity.this,updateMenu.class));
                         }
                         else
                             progressDialog.dismiss();

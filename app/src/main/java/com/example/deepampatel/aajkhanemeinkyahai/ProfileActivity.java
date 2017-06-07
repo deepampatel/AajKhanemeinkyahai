@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class profileactivity extends AppCompatActivity implements View.OnClickListener{
     private TextView mess1;
@@ -16,6 +17,7 @@ public class profileactivity extends AppCompatActivity implements View.OnClickLi
     private Button updateButton;
     private TextView mess3;
     private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +27,9 @@ public class profileactivity extends AppCompatActivity implements View.OnClickLi
             finish();
             startActivity(new Intent(this,LoginActivity.class));
         }
+
         updateButton=(Button)findViewById(R.id.updateButton);
+
         mess1=(TextView)findViewById(R.id.mess1);
         mess2=(TextView)findViewById(R.id.mess2);
         mess3=(TextView)findViewById(R.id.mess3);
@@ -34,10 +38,12 @@ public class profileactivity extends AppCompatActivity implements View.OnClickLi
         mess2.setOnClickListener(this);
         mess3.setOnClickListener(this);
         updateButton.setOnClickListener(this);
+
     }
 
     public void getmess1Menu(){
-        Toast.makeText(this,"MEss1!",Toast.LENGTH_LONG).show();
+        finish();
+        startActivity(new Intent(profileactivity.this,seeMenu.class));
     }
     public void getmess2Menu(){
     }
@@ -60,7 +66,7 @@ public class profileactivity extends AppCompatActivity implements View.OnClickLi
         else if(v==updateButton)
         {
             finish();
-            startActivity(new Intent(profileactivity.this,SeeMenuActivity.class));
+            startActivity(new Intent(profileactivity.this,updateMenu.class));
         }
     }
 }

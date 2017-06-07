@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SeeMenuActivity extends AppCompatActivity implements View.OnClickListener{
+public class updateMenu extends AppCompatActivity implements View.OnClickListener{
     private TextView userEmailText;
     private Button logoutButton;
     private FirebaseAuth firebaseAuth;
@@ -26,7 +26,7 @@ public class SeeMenuActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seemenu);
+        setContentView(R.layout.activity_updatemenu);
         firebaseAuth=FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()==null){
             finish();
