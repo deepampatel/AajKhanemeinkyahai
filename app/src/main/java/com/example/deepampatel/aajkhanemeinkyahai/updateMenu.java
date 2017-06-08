@@ -55,7 +55,7 @@ public class updateMenu extends AppCompatActivity implements View.OnClickListene
                 String item;
                 switch (position){
                     case 0:
-                        Toast.makeText(getApplicationContext(), "Please enter password", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Please select a mess!", Toast.LENGTH_SHORT).show();
 
                         break;
                     case 1:
@@ -92,11 +92,15 @@ public class updateMenu extends AppCompatActivity implements View.OnClickListene
         item1=editTextitem1.getText().toString();
         item2=editTextitem2.getText().toString();
         item3=editTextitem3.getText().toString();
-        Menu messmenu=new Menu(item1,item2,item3);
+        if (item1==null && item2==null &&item3==null) {
+            Toast.makeText(getApplicationContext(), "Cannot update an empty menu", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Menu messmenu = new Menu(item1, item2, item3);
 
-        databaseReference.child("148vqOGRjOS5sscrTA0ZJTqdyhF3").child(seletedMessl).setValue(messmenu);
-        Toast.makeText(this,"Added Menu!!",Toast.LENGTH_LONG).show();
-
+            databaseReference.child("148vqOGRjOS5sscrTA0ZJTqdyhF3").child(seletedMessl).setValue(messmenu);
+            Toast.makeText(this, "Added Menu!!", Toast.LENGTH_LONG).show();
+        }
     }
     @Override
     public void onClick(View v) {
@@ -108,6 +112,7 @@ public class updateMenu extends AppCompatActivity implements View.OnClickListene
         }
         if(v==saveitem)
         {
+
         saveMenuToFirebase();
         }
     }
