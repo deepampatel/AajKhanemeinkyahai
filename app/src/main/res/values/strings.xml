@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">AajKhanemeinkyahai?</string>
+    <string-array name="spinner_item">
+        <item>
+            Select Mess
+        </item>
+        <item>
+            Mess1
+        </item>
+        <item>
+            Mess2
+        </item>
+        <item>
+            Mess3
+        </item>
+    </string-array>
 </resources>

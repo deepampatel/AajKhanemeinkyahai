@@ -17,7 +17,7 @@ public class profileactivity extends AppCompatActivity implements View.OnClickLi
     private Button updateButton;
     private TextView mess3;
     private FirebaseAuth firebaseAuth;
-    private FirebaseDatabase firebaseDatabase;
+    String selectedmess;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +42,20 @@ public class profileactivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void getmess1Menu(){
-        finish();
-        startActivity(new Intent(profileactivity.this,seeMenu.class));
+        Intent intent = new Intent(profileactivity.this,seeMenu.class);
+        intent.putExtra("MESS_NAME", "Mess1");
+        startActivity(intent);
+
     }
     public void getmess2Menu(){
+        Intent intent = new Intent(profileactivity.this,seeMenu.class);
+        intent.putExtra("MESS_NAME", "Mess2");
+        startActivity(intent);
     }
     public void getmess3Menu(){
+        Intent intent = new Intent(profileactivity.this,seeMenu.class);
+        intent.putExtra("MESS_NAME", "Mess3");
+        startActivity(intent);
     }
     @Override
     public void onClick(View v) {
@@ -65,7 +73,7 @@ public class profileactivity extends AppCompatActivity implements View.OnClickLi
         }
         else if(v==updateButton)
         {
-            finish();
+
             startActivity(new Intent(profileactivity.this,updateMenu.class));
         }
     }

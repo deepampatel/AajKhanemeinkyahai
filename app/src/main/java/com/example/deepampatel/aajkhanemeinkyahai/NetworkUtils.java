@@ -40,7 +40,7 @@ public class NetworkUtils {
 
 
     public static URL buildUrl() {
-        String key = "your api key here";
+
         Uri builtUri = Uri.parse(MENU_BASE_URL).buildUpon()
                 .build();
 
@@ -55,8 +55,8 @@ public class NetworkUtils {
     }
 
 
-    public static String getResponseFromHttpUrl() throws IOException {
-        URL url=buildUrl();
+    public static String getResponseFromHttpUrl(URL url) throws IOException {
+
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
             InputStream in = urlConnection.getInputStream();
