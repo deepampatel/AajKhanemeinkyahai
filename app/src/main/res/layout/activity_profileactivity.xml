@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context="com.example.deepampatel.aajkhanemeinkyahai.profileactivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/mess1"
+        android:layout_height="wrap_content"
+        android:text="Mess1"
+        android:gravity="center"
+        android:layout_weight="1"
+        />
+    <TextView
+        android:layout_width="match_parent"
+    android:id="@+id/mess2"
+        android:layout_height="wrap_content"
+        android:text="Mess2"
+        android:gravity="center"
+        android:layout_weight="1"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/mess3"
+        android:layout_height="wrap_content"
+        android:text="Mess3"
+        android:gravity="center"
+        android:layout_weight="1"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:id="@+id/updateButton"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        />
+
+</LinearLayout>
