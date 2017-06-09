@@ -5,40 +5,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="#9FA8DA"
     android:layout_gravity="center_vertical"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context="com.example.deepampatel.aajkhanemeinkyahai.MainActivity">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User Registeration"
-        android:layout_gravity="center_horizontal"/>
+  <ImageView
+      android:layout_width="100dp"
+      android:layout_height="150dp"
+      android:layout_gravity="center_horizontal"
+      android:src="@drawable/icon"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#9FA8DA"
+            android:orientation="vertical">
+
     <EditText
         android:inputType="textEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your email here"
-        android:id="@+id/editextEMAIL"/>
+        android:padding="5dp"
+        android:hint="Email"
+        android:id="@+id/editextEMAIL"
+        android:background="#ffffff"
+        android:layout_marginBottom="5dp"/>
     <EditText
         android:inputType="textPassword"
+        android:background="#ffffff"
+        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter your password here"
+        android:hint="Password"
         android:id="@+id/editextPASSWORD"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/signinText"
-        android:text="Already a user? Sign in here."
-        android:layout_gravity="center_horizontal"/>
+
     <Button
         android:layout_marginTop="20dp"
         android:id="@+id/signupbutton"
-        android:layout_width="wrap_content"
+        android:layout_width="330sp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="Sign Up"/>
+        </LinearLayout>
+    </ScrollView>
+    <TextView
+        android:layout_marginTop="100dp"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/signinText"
+        android:textColor="#000000"
+
+        android:text="Already a user? Sign in here."
+        android:layout_gravity="center_horizontal"/>
 
 
 </LinearLayout>
