@@ -17,12 +17,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText edittextEmail;
     private EditText edittextPassword;
     private TextView signupText;
-    private Button signinButton;
-    private ProgressDialog progressDialog;
+    private CircularProgressButton signinButton;
+
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -38,48 +40,53 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         edittextEmail=(EditText)findViewById(R.id.editextEMAIL);
         edittextPassword=(EditText)findViewById(R.id.editextPASSWORD);
         signupText=(TextView)findViewById(R.id.signupText);
-        signinButton=(Button)findViewById(R.id.signinbutton);
-        progressDialog=new ProgressDialog(this);
+        signinButton=(CircularProgressButton) findViewById(R.id.signinbutton);
+
         signinButton.setOnClickListener(this);
         signupText.setOnClickListener(this);
 
     }
     private void userSignin() {
+        signinButton.startAnimation();
         String email=edittextEmail.getText().toString().trim();
         String password=edittextPassword.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)) {
+            signinButton.revertAnimation();
             Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
             return;
         }
         if(TextUtils.isEmpty(password)){
+            signinButton.revertAnimation();
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
             return;
         }
-        progressDialog.setMessage("Signing in");
-        progressDialog.show();
+
         firebaseAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            progressDialog.dismiss();
 
+                            signinButton.revertAnimation();
                             startActivity(new Intent(LoginActivity.this,profileactivity.class));
+                            edittextEmail.setText("");
+                            edittextPassword.setText("");
                         }
                         else
-                            progressDialog.dismiss();
+                            signinButton.revertAnimation();
                             Toast.makeText(LoginActivity.this,"Could not signin,please try again",Toast.LENGTH_LONG).show();
+                        edittextEmail.setText("");
+                        edittextPassword.setText("");
                     }
                 });
-        edittextEmail.setText("");
-        edittextPassword.setText("");
+
     }
 
     @Override
     public void onClick(View v) {
         if(v==signinButton)
-            userSignin();
+        { userSignin();}
         if(v==signupText) {
             finish();
             startActivity(new Intent(this,MainActivity.class));

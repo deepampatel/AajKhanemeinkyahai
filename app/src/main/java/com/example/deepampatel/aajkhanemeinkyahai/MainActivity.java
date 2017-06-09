@@ -17,12 +17,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private EditText edittextemail;
     private EditText edittextpassword;
     private TextView signinTextview;
-    private Button signupbutton;
-    private ProgressDialog progressDialog;
+    private CircularProgressButton signupbutton;
+
     private FirebaseAuth firebaseAuth;
 
 
@@ -36,10 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             finish();
             startActivity(new Intent(this,profileactivity.class));
         }
-        progressDialog=new ProgressDialog(this);
+
         edittextemail=(EditText)findViewById(R.id.editextEMAIL);
         edittextpassword=(EditText)findViewById(R.id.editextPASSWORD);
-        signupbutton =(Button)findViewById(R.id.signupbutton);
+        signupbutton =(CircularProgressButton) findViewById(R.id.signupbutton);
 
         signinTextview=(TextView)findViewById(R.id.signinText);
 
@@ -48,30 +50,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
     private void registeruser(){
+        signupbutton.startAnimation();
         String email=edittextemail.getText().toString().trim();
         String password=edittextpassword.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)) {
+            signupbutton.revertAnimation();
             Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
             return;
         }
         if(TextUtils.isEmpty(password)){
+            signupbutton.revertAnimation();
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
             return;
         }
-        progressDialog.setMessage("Registering user");
-        progressDialog.show();
+
         firebaseAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            progressDialog.dismiss();
+                            signupbutton.revertAnimation();
                             finish();
                             startActivity(new Intent(MainActivity.this,profileactivity.class));
                         }
                         else {
-
+                            signupbutton.revertAnimation();
                             Toast.makeText(MainActivity.this, "Could not register,please try again", Toast.LENGTH_LONG).show();
                         }
                     }

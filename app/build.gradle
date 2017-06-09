@@ -29,6 +29,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile 'com.google.firebase:firebase-database:10.2.1'
     compile 'com.android.support:design:23.0.0'
+    compile 'br.com.simplepass:loading-button-android:1.7.2'
 
     testCompile 'junit:junit:4.12'
 }
