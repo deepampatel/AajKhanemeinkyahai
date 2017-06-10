@@ -11,6 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.NativeExpressAdView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -40,6 +42,10 @@ public class updateMenu extends AppCompatActivity implements View.OnClickListene
             finish();
             startActivity(new Intent(this,LoginActivity.class));
         }
+        NativeExpressAdView adView = (NativeExpressAdView)findViewById(R.id.adView);
+
+        AdRequest request = new AdRequest.Builder().build();
+        adView.loadAd(request);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         editTextitem1=(EditText) findViewById (R.id.item1);
         editTextitem2 =(EditText) findViewById( R.id.item2);

@@ -6,15 +6,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 import java.io.IOException;
 import java.net.URL;
-import java.security.Timestamp;
 
 public class seeMenu extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private TextView item1;
     private TextView item2;
     private TextView item3;
+
     private TextView updateTime;
     String selectedmess;
     String url;
@@ -22,6 +26,10 @@ public class seeMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_see_menu);
+
+
+
+
         item1=(TextView)findViewById(R.id.item1);
         item2=(TextView)findViewById(R.id.item2);
         item3=(TextView)findViewById(R.id.item3);
