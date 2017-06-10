@@ -16,6 +16,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class updateMenu extends AppCompatActivity implements View.OnClickListener{
    private Spinner spinner;
     private TextView userEmailText;
@@ -92,11 +96,14 @@ public class updateMenu extends AppCompatActivity implements View.OnClickListene
         item1=editTextitem1.getText().toString();
         item2=editTextitem2.getText().toString();
         item3=editTextitem3.getText().toString();
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd:MMMM:yyyy HH:mm a");
+        String strDate = sdf.format(c.getTime());
         if (item1==null && item2==null &&item3==null) {
             Toast.makeText(getApplicationContext(), "Cannot update an empty menu", Toast.LENGTH_SHORT).show();
         }
         else{
-            Menu messmenu = new Menu(item1, item2, item3);
+            Menu messmenu = new Menu(item1, item2, item3,strDate);
 
             databaseReference.child("148vqOGRjOS5sscrTA0ZJTqdyhF3").child(seletedMessl).setValue(messmenu);
             Toast.makeText(this, "Added Menu!!", Toast.LENGTH_LONG).show();
@@ -108,7 +115,11 @@ public class updateMenu extends AppCompatActivity implements View.OnClickListene
         {
             firebaseAuth.signOut();
             finish();
-            startActivity(new Intent(this,LoginActivity.class));
+            Intent intent =new Intent(this,LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
         }
         if(v==saveitem)
         {

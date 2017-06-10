@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -16,12 +19,16 @@ public class profileactivity extends AppCompatActivity implements View.OnClickLi
     private TextView mess2;
     private Button updateButton;
     private TextView mess3;
+    private AdView mAdView;
     private FirebaseAuth firebaseAuth;
-    String selectedmess;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profileactivity);
+        MobileAds.initialize(this, "ca-app-pub-6582570502811965~4872011338");
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         firebaseAuth=FirebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser()==null){
             finish();

@@ -40,5 +40,13 @@
         android:gravity="center_horizontal"
         android:layout_gravity="center_horizontal"
         />
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-6582570502811965/3116076534" />
 
 </LinearLayout>

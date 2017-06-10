@@ -8,12 +8,14 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.Timestamp;
 
 public class seeMenu extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private TextView item1;
     private TextView item2;
     private TextView item3;
+    private TextView updateTime;
     String selectedmess;
     String url;
     @Override
@@ -23,6 +25,8 @@ public class seeMenu extends AppCompatActivity {
         item1=(TextView)findViewById(R.id.item1);
         item2=(TextView)findViewById(R.id.item2);
         item3=(TextView)findViewById(R.id.item3);
+
+        updateTime=(TextView)findViewById(R.id.timeOfUpdate);
         progressDialog=new ProgressDialog(this);
         selectedmess = getIntent().getStringExtra("MESS_NAME");
         url="https://aajkhanemeinkyahai.firebaseio.com/148vqOGRjOS5sscrTA0ZJTqdyhF3/"+selectedmess+".json";
@@ -56,6 +60,7 @@ public class seeMenu extends AppCompatActivity {
                 item1.setText(menu.item1);
                 item2.setText(menu.item2);
                 item3.setText(menu.item3);
+                updateTime.setText(menu.timeStamp);
             }
 
         }

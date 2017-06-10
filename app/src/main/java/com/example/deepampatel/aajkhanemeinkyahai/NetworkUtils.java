@@ -82,7 +82,8 @@ public class NetworkUtils {
             String item1=baseJsonResponse.getString("item1");
             String item2=baseJsonResponse.getString("item2");
             String item3=baseJsonResponse.getString("item3");
-            return new Menu(item1,item2,item3);
+            String timeStamp=baseJsonResponse.getString("timeStamp");
+            return new Menu(item1,item2,item3,timeStamp);
         } catch (JSONException e) {
             return null;
         }
