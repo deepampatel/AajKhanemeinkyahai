@@ -19,6 +19,7 @@ public class seeMenu extends AppCompatActivity {
     private TextView item1;
     private TextView item2;
     private TextView item3;
+    private TextView messName;
 
     private TextView updateTime;
     String selectedmess;
@@ -34,10 +35,11 @@ public class seeMenu extends AppCompatActivity {
         item1=(TextView)findViewById(R.id.item1);
         item2=(TextView)findViewById(R.id.item2);
         item3=(TextView)findViewById(R.id.item3);
-
+        messName=(TextView)findViewById(R.id.messName);
         updateTime=(TextView)findViewById(R.id.timeOfUpdate);
         progressDialog=new ProgressDialog(this);
         selectedmess = getIntent().getStringExtra("MESS_NAME");
+        messName.setText(selectedmess);
         url="https://aajkhanemeinkyahai.firebaseio.com/148vqOGRjOS5sscrTA0ZJTqdyhF3/"+selectedmess+".json";
         new menutask().execute();
     }
@@ -69,7 +71,7 @@ public class seeMenu extends AppCompatActivity {
                 item1.setText(menu.item1);
                 item2.setText(menu.item2);
                 item3.setText(menu.item3);
-                updateTime.setText(menu.timeStamp);
+                updateTime.setText("Updated on "+menu.timeStamp);
             }
             else{
                 progressDialog.dismiss();
