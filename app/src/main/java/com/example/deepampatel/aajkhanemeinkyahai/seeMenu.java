@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -69,6 +70,10 @@ public class seeMenu extends AppCompatActivity {
                 item2.setText(menu.item2);
                 item3.setText(menu.item3);
                 updateTime.setText(menu.timeStamp);
+            }
+            else{
+                progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Please try again later!", Toast.LENGTH_SHORT).show();
             }
 
         }
