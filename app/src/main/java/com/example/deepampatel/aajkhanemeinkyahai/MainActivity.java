@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(firebaseAuth.getCurrentUser()!=null)
         {
             finish();
-            startActivity(new Intent(this,profileactivity.class));
+            startActivity(new Intent(this,updateMenu.class));
         }
 
         edittextemail=(EditText)findViewById(R.id.editextEMAIL);
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if(task.isSuccessful()){
                             signupbutton.revertAnimation();
                             finish();
-                            startActivity(new Intent(MainActivity.this,profileactivity.class));
+                            startActivity(new Intent(MainActivity.this,updateMenu.class));
                         }
                         else {
                             signupbutton.revertAnimation();

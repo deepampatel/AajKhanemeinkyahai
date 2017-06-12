@@ -1,6 +1,7 @@
 package com.example.deepampatel.aajkhanemeinkyahai;
 
 import android.content.Intent;
+import android.location.LocationListener;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -33,11 +34,7 @@ public class profileactivity extends AppCompatActivity implements View.OnClickLi
         mInterstitialAd=new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-6582570502811965/4592809730");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
-        firebaseAuth=FirebaseAuth.getInstance();
-        if(firebaseAuth.getCurrentUser()==null){
-            finish();
-            startActivity(new Intent(this,LoginActivity.class));
-        }
+
 
         updateButton=(Button)findViewById(R.id.updateButton);
 
@@ -102,7 +99,9 @@ public class profileactivity extends AppCompatActivity implements View.OnClickLi
         else if(v==updateButton)
         {
 
-            startActivity(new Intent(profileactivity.this,updateMenu.class));
+            Intent intent =new Intent(this,LoginActivity.class);
+            startActivity(intent);
+
         }
     }
 }
